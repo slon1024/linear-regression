@@ -17,16 +17,25 @@ module Regression
         def cov(xs, ys)
             raise "Length xs and ys must be equal" unless xs.length == ys.length
 
+            xys = (0..(xs.length-1)).map{|i| xs[i] * ys[i]}
+            ev(xys) - ev(xs)*ev(ys)
+        end
+
+        # Another way to implement covariance
+        def cov2(xs, ys)
+            raise "Length xs and ys must be equal" unless xs.length == ys.length
+
             len = xs.length
             sum = 0 
             ev_x = ev(xs)
             ev_y = ev(ys)
 
             0.upto(len - 1) do |i|
-                sum += (xs[i].to_f - ev_x) * (ys[i].to_f - ev_y)
+               sum += (xs[i].to_f - ev_x) * (ys[i].to_f - ev_y)
             end
             sum / len
         end
+
 
         # Variance
         # http://en.wikipedia.org/wiki/Variance
