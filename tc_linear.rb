@@ -37,7 +37,7 @@ module Regression
             expected = 196.50
             actual = @linear.cov(@xs, @ys)
 
-            assert_equal(expected, actual)
+            assert_in_delta(expected, actual, 0.000001)
         end
 
         def test_stdev_with_nil_should_be_raise
