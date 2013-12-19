@@ -61,6 +61,20 @@ module Regression
             cov(xs, ys) / (stdev(xs).to_f * stdev(ys).to_f)
         end
 
+        # Spearman's rank correlation coefficient
+        # http://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient
+        def scc(xs, ys)
+            raise "Length xs and ys must be equal" unless xs.length == ys.length
+            
+            len = xs.length
+            sum = 0.0
+            (0..(len-1)).each do |i|
+                sum += (xs[i] - ys[i]) ** 2
+            end
+
+            1 - (6 * sum)/(len * (len - 1))
+        end
+
         # y = kx + b
         def k(xs, ys)
             raise "Length xs and ys must be equal" unless xs.length == ys.length
