@@ -5,11 +5,7 @@ module Regression
         def ev(items)
             raise "Items must be an array" unless items.is_a?(Array)
 
-            sum = 0
-            items.each do |item|
-                sum += item
-            end
-            sum.to_f / items.length
+            items.inject(0) {|sum, x| sum + x}.to_f / items.length
         end
 
         # Covariance
