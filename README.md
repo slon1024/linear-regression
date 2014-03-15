@@ -1,7 +1,12 @@
 #[Linear regression](http://en.wikipedia.org/wiki/Linear_regression)
 
+##Install
+```sh
+gem install linear-regression
+```
+
 ## Intro
-My goal is **to simplify the understanding to enable programmers and play around with all these definitions using your favorite programming language**.
+My goal is **to simplify the understanding to enable programmers and play around with all these definitions using your favorite programming language** (I realized it using **Ruby**).
 
 On this subject, you can find a lot of material (both online and in books), but yet I did not meet version, depending on which you can easily to implement algorithm in a programming language.
 
