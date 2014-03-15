@@ -10,40 +10,40 @@ module Regression
       @ys = [51, 63, 68, 79, 90, 97, 88, 50, 63, 60]
     end
 
-    def test_ev_with_nil_shoul_be_raise
+    def test_mean_with_nil_shoul_be_raise
       assert_raise RuntimeError do
-        @base.ev(nil)
+        @base.mean(nil)
       end
     end
 
-    def test_ev_with_array_should_be_equal_to_expected
+    def test_mean_with_array_should_be_equal_to_expected
       expected = 175.0
-      actual = @base.ev(@xs)
+      actual = @base.mean(@xs)
       assert_equal(expected, actual)
     end
 
-    def test_cov_with_diff_length_xs_and_ys_should_be_raise
+    def test_covariance_with_diff_length_xs_and_ys_should_be_raise
       assert_raise RuntimeError do 
-        @base.cov(@xs, @ys[1..@ys.length])
+        @base.covariance(@xs, @ys[1..@ys.length])
       end
     end
 
-    def test_cov_with_xs_and_ys_should_be_equal_to_expected
+    def test_covariance_with_xs_and_ys_should_be_equal_to_expected
       expected = 196.50
-      actual = @base.cov(@xs, @ys)
+      actual = @base.covariance(@xs, @ys)
 
       assert_in_delta(expected, actual, 0.000001)
     end
 
-    def test_stdev_with_nil_should_be_raise
+    def test_standard_deviation_with_nil_should_be_raise
       assert_raise RuntimeError do
-        @base.stdev(nil)
+        @base.standard_deviation(nil)
       end
     end
 
-    def test_stdev_with_xs_should_be_equal_to_expected
+    def test_standard_deviation_with_xs_should_be_equal_to_expected
       expected = 15.0
-      actual = @base.stdev(@xs)
+      actual = @base.standard_deviation(@xs)
       assert_equal(expected, actual)
     end
   end

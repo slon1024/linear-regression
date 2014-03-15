@@ -11,7 +11,7 @@ module Regression
     # Pearson product-moment correlation coefficient
     # http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient
     def pearson
-      @pearson ||= cov(@xs, @ys) / (stdev(@xs).to_f * stdev(@ys).to_f)
+      @pearson ||= covariance(@xs, @ys) / (standard_deviation(@xs).to_f * standard_deviation(@ys).to_f)
     end
 
     # Spearman's rank correlation coefficient

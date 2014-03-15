@@ -17,12 +17,12 @@
 
     # y = kx + b
     def slope
-      @slope ||= cov(@xs, @ys) / var(@xs)   
+      @slope ||= covariance(@xs, @ys) / variance(@xs)   
     end
 
     # y = kx + b
     def intercept
-      @intercept ||= ev(@ys) - slope * ev(@xs)
+      @intercept ||= mean(@ys) - slope * mean(@xs)
     end
   end
 end
