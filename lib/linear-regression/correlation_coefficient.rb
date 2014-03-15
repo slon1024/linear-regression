@@ -1,6 +1,8 @@
 module Regression
   class CorrelationCoefficient < Base
     def initialize(xs, ys)
+      raise "xs must be an array" unless xs.is_a?(Array)
+      raise "ys must be an array" unless ys.is_a?(Array)
       raise "Length xs and ys must be equal" unless xs.length == ys.length
 
       @xs = xs
