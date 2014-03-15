@@ -64,15 +64,15 @@ module Regression
       assert_in_delta(expected, actual, 0.000001)
     end
 
-    def test_k
+    def test_slope
       expected =  0.87333
-      actual = @linear.k(@xs, @ys)
+      actual = @linear.slope(@xs, @ys)
       assert_in_delta(expected, actual, 0.00001)
     end
 
-    def test_b
+    def test_intercept
       expected = -81.93333
-      actual = @linear.b(@xs, @ys)
+      actual = @linear.intercept(@xs, @ys)
       assert_in_delta(expected, actual, 0.00001)
     end
   end

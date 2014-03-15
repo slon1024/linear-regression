@@ -10,26 +10,21 @@ module Regression
 
     # Covariance
     # http://en.wikipedia.org/wiki/Covariance
-    def cov(xs, ys)
+    def cov2(xs, ys)
       raise "Length xs and ys must be equal" unless xs.length == ys.length
 
-      xys = (0..(xs.length-1)).map{|i| xs[i] * ys[i]}
+      xys = xs.zip(ys).map{|x,y| x*y}
       ev(xys) - ev(xs)*ev(ys)
     end
 
     # Another way to implement covariance
-    def cov2(xs, ys)
+    def cov(xs, ys)
       raise "Length xs and ys must be equal" unless xs.length == ys.length
 
-      len = xs.length
-      sum = 0 
-      ev_x = ev(xs)
-      ev_y = ev(ys)
-
-      0.upto(len - 1) do |i|
-         sum += (xs[i].to_f - ev_x) * (ys[i].to_f - ev_y)
-      end
-      sum / len
+      ev_x, ev_y = ev(xs), ev(ys)
+      xs.zip(ys)
+        .map{|x,y| (x-ev_x) * (y-ev_y)}
+        .inject(0) {|sum, x| sum += x} / xs.length
     end
 
 
@@ -62,25 +57,25 @@ module Regression
     def scc(xs, ys)
       raise "Length xs and ys must be equal" unless xs.length == ys.length
       
-      len = xs.length
-      sum = 0.0
-      (0..(len-1)).each do |i|
-        sum += (xs[i] - ys[i]) ** 2
-      end
+      len, sum = xs.length, 0.0
+      
+      sum = xs.zip(ys)
+        .map{|x, y| (x - y) ** 2}
+        .inject(0.0) {|sum, x| sum += x}
 
       1 - (6 * sum)/(len * (len - 1))
     end
 
     # y = kx + b
-    def k(xs, ys)
+    def slope(xs, ys)
       raise "Length xs and ys must be equal" unless xs.length == ys.length
 
       cov(xs, ys) / var(xs)   
     end
 
     # y = kx + b
-    def b(xs, ys)
-      ev(ys) - k(xs, ys) * ev(xs)
+    def intercept(xs, ys)
+      ev(ys) - slope(xs, ys) * ev(xs)
     end
   end
 end
