@@ -7,5 +7,6 @@ Gem::Specification.new do |s|
   s.authors     = ["Vladimir Alekseichenko"]
   s.email       = 'vova@vova.me'
   s.files       = ["lib/linear-regression.rb"]
-  s.license       = 'MIT'
+  s.homepage    = "https://github.com/slon1024/linear-regression"
+  s.license     = 'MIT'
 end

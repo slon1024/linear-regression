@@ -1,5 +1,5 @@
 module Regression
-  require_relative "linear"
+  require "linear-regression"
   require "test/unit"
 
   class RegressionTests < Test::Unit::TestCase
